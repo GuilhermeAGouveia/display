@@ -65,6 +65,7 @@ int draw(int direction, int lado, int fontSize)
 
 void drawByLine(char *numero, int line, int fontSize)
 {
+    int digit1_a[5] = {0, 1, 0, 1, 0};
     int digit1[5][2] = {
         {-1, 1},
         {1, 1},
@@ -72,6 +73,7 @@ void drawByLine(char *numero, int line, int fontSize)
         {1, 1},
         {-1, 1}};
 
+    int digit2_b = {1, 1, 1, 0, 1};
     int digit2[5][2] = {
         {0, -1},
         {1, 1},
