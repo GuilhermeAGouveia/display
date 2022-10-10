@@ -2,14 +2,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int draw(int direction, int lado, int fontSize)
+enum Orientation { HORIZONTAL, VERTICAL };
+
+int draw(Orientation direction, int lado, int fontSize)
 {
 
     printf(" ");
     fontSize = fontSize + 2;
     for (int i = 0; i < fontSize; i++)
     {
-        if (!direction)
+        if (direction == Orientation.HORIZONTAL)
         {
             if (i == 0 || i == fontSize - 1)
                 printf(" ");
@@ -24,7 +26,7 @@ int draw(int direction, int lado, int fontSize)
     }
 }
 
-void drawByLine(char *numero, int line, int fontSize, int direction)
+void drawByLine(char *numero, int line, int fontSize, Orientation direction)
 {
     char tmp[2];
     int representation[10][5] = {
@@ -53,9 +55,9 @@ int display(char *numero, int fontSize)
     {
         if (j == 1 || j == 3)
             for (int i = 0; i < fontSize; i++)
-                drawByLine(numero, j, fontSize, 1);
+                drawByLine(numero, j, fontSize, Orientation.VERTICAL);
         else
-            drawByLine(numero, j, fontSize, 0);
+            drawByLine(numero, j, fontSize, Orientation.HORIZONTAL);
     }
 }
 
