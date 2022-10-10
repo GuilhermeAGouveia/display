@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-enum Orientation { HORIZONTAL, VERTICAL };
+typedef enum { HORIZONTAL = 0, VERTICAL = 1 } Orientation;
 
 int draw(Orientation direction, int lado, int fontSize)
 {
@@ -11,7 +11,7 @@ int draw(Orientation direction, int lado, int fontSize)
     fontSize = fontSize + 2;
     for (int i = 0; i < fontSize; i++)
     {
-        if (direction == Orientation.HORIZONTAL)
+        if (direction == HORIZONTAL)
         {
             if (i == 0 || i == fontSize - 1)
                 printf(" ");
@@ -55,11 +55,12 @@ int display(char *numero, int fontSize)
     {
         if (j == 1 || j == 3)
             for (int i = 0; i < fontSize; i++)
-                drawByLine(numero, j, fontSize, Orientation.VERTICAL);
+                drawByLine(numero, j, fontSize, VERTICAL);
         else
-            drawByLine(numero, j, fontSize, Orientation.HORIZONTAL);
+            drawByLine(numero, j, fontSize, HORIZONTAL);
     }
 }
+
 
 int main()
 {
